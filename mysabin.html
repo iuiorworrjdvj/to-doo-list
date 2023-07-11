@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head><style>li {
+   
+    width: 300px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: auto;
+    color: darkblack;
+ }
+ .remove{
+     background-color: red;
+     color: white;
+     font-style: italic;
+ }
+ .Add{
+     background-color:  #09ff00;
+ }
+ div{
+     background-color: rgba(255, 255, 255, 0.801);
+ }
+ input{
+     border-radius: 0px;
+     width: 250px;
+     border: none;
+   border-bottom: 1px solid black;
+   outline: none; /* Remove the default outline */
+   
+   border-width: 2px;
+ }
+ body{
+     background-color: lightgrey;
+ }
+ button {
+     margin: 6px;
+     border-radius: 5px;
+     
+ }
+ .dones{
+     background-color: rgb(3, 252, 3);
+ }
+ </style>
+ <script>a
+
+
+    function Addclicked() {
+        let mytask=document.getElementById("input");
+        if(mytask.value===''){
+            alert("please provide me  some kind of task that you want to add ");
+        }
+        else{
+            let listitem=document.createElement("li"); 
+            listitem.textContent=mytask.value;
+            let checkbox=document.createElement("input");
+            checkbox.type="checkbox";
+            checkbox.className="checkbox";
+            let done=document.createElement("button");
+            done.textContent="Done";
+            done.className="dones";
+            done.addEventListener('click',complete);
+            let remove=document.createElement('button');
+            remove.textContent="Remove";
+            remove.className="remove";
+            listitem.appendChild(checkbox);remove.addEventListener('click', deleteit);
+    
+            document.getElementById("mylist").appendChild(listitem);
+            listitem.appendChild(done);
+            
+            listitem.appendChild(remove);
+    
+            
+        }
+        mytask.value="";
+    
+    }
+    function deleteit(event){
+    let mylist=event.target.parentNode;
+    mylist.remove();
+    }
+    function complete(event){
+     let list=event.target.parentNode;
+     var checkbox = list.querySelector("input[type='checkbox']");
+      checkbox.checked = true;
+    
+    }</script>
+
+<body>
+    <link rel="stylesheet" href="sabin.css">
+    <script src="sabin.js"></script>
+   <CENter> <h1>To-Do-List</h1></CENter>
+   <center><div>
+    <input type="text  name="input" id="input" placeholder="To-Do-List" >
+    <button type="button" onclick=" Addclicked()" class="Add">Add</button>
+    <ul id="mylist"></ul>
+</div></center>
+</body>
+</html>
